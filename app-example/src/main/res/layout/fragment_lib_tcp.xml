@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.LibSocketFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/group_thread_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <RadioButton
+                android:id="@+id/radio_simplex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:gravity="center"
+                android:text="单工"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:id="@+id/radio_duplex"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="双工"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_ip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/shape_c5_sowhite"
+                android:digits="0123456789."
+                android:elevation="5dp"
+                android:hint="IP"
+                android:inputType="numberSigned"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="xx:xx:xx:xx" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_port"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_c5_sowhite"
+                android:elevation="5dp"
+                android:hint="PORT"
+                android:inputType="number"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="xxxx" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_reconnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="10dp"
+                android:text="失败重连  "
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_connect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="连接"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_disconnect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_weight="1"
+                android:text="断开"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_clear_log"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="清除日志"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_ip_new"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/shape_c5_sowhite"
+                android:digits="0123456789."
+                android:elevation="5dp"
+                android:hint="IP"
+                android:inputType="numberSigned"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="xx:xx:xx:xx" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_port_new"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_c5_sowhite"
+                android:elevation="5dp"
+                android:hint="PORT"
+                android:inputType="number"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="xxxx" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_redirect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:text="重定向"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_heartbeat_frequ"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_c5_sowhite"
+                android:elevation="5dp"
+                android:hint="millisecond"
+                android:inputType="number"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="x" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_set_frequ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="设置频率"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start_heartbeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="开始"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_manual_heartbeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="手动"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:orientation="horizontal"
+            android:paddingVertical="5dp"
+            android:translationZ="5dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/text_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="4"
+                android:background="@drawable/shape_c5_sowhite"
+                android:elevation="5dp"
+                android:hint="MESSAGE"
+                android:maxLines="3"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="xxxx" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_send"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:text="发送"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout_log"
+        layout="@layout/include_log_print"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_server_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText"
+            tools:text="当前IP：xx:xx:xx:xx \n启动8080服务器？" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_server"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

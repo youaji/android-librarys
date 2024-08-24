@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/icon_debug"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:src="@mipmap/libs_debug_ic_debug" />

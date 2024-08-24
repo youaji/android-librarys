@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/share"
+        android:title="分享"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/copy"
+        android:title="复制"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/shot"
+        android:title="截图"
+        tools:ignore="HardcodedText" />
+</menu>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name" translatable="false">debug</string>
+    <string name="nav_header_title" translatable="false">Youaji</string>
+    <string name="nav_header_subtitle" translatable="false">youaji.com@gmail.com</string>
+
+    <string name="menu_home" translatable="false">Home</string>
+    <string name="menu_search_device" translatable="false">Search Device</string>
+    <string name="menu_lib_socket" translatable="false">Socket</string>
+    <string name="menu_lib_tcp" translatable="false">TCP</string>
+    <string name="menu_lib_ffmpeg" translatable="false">FFmpeg</string>
+    <string name="menu_lib_ffmpeg5" translatable="false">FFmpeg5</string>
+    <string name="menu_lib_vlc" translatable="false">VLC</string>
+    <string name="menu_lib_opencv" translatable="false">OpenCV</string>
+    <string name="menu_lib_yuv" translatable="false">YUV</string>
+    <string name="menu_lib_ftp_client" translatable="false">FTP Client</string>
+    <string name="menu_wifi" translatable="false">WiFi</string>
+
+</resources>

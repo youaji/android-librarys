@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <!--        <activity-->
+        <!--            android:name=".MainActivity"-->
+        <!--            android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN"/>-->
+
+        <!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.SEND"/>-->
+        <!--                <category android:name="android.intent.category.DEFAULT"/>-->
+        <!--                <data android:mimeType="*/*"/>-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.SEND_MULTIPLE"/>-->
+        <!--                <category android:name="android.intent.category.DEFAULT"/>-->
+        <!--                <data android:mimeType="*/*"/>-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+
+        <provider
+            android:name="com.youaji.libs.ftp.client.saf.Provider"
+            android:authorities="${applicationId}.ftp.client.StorageProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+    </application>
+
+</manifest>

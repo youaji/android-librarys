@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    moduleApi("${libs.youaji.tcp.core.get()}")
+}
+
+if (file("${rootProject.projectDir}/publish.gradle").exists()) {
+    apply from: "${rootProject.projectDir}/publish.gradle"
+    initPublisher("libs-tcp-interfaces", "${libs.versions.youajiTcpInterfaces.get()}", "android tcp interfaces Library")
+}

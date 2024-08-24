@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/ivStepperMinus"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/libs_widget_stepper_button"
+        android:clickable="true"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/libs_widget_stepper_minus" />
+
+    <ImageView
+        android:id="@+id/ivStepperPlus"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/libs_widget_stepper_button"
+        android:clickable="true"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/libs_widget_stepper_plus" />
+
+    <TextView
+        android:id="@+id/tvStepperContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/ivStepperPlus"
+        android:layout_toRightOf="@id/ivStepperMinus"
+        android:background="@color/libs_widget_stepper_text_background"
+        android:gravity="center"
+        android:textColor="@color/libs_widget_stepper_text"
+        android:textSize="15sp"
+        tools:text="100" />
+
+</RelativeLayout>

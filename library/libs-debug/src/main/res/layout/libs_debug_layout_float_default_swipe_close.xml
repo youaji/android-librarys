@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youaji.libs.debug.widget._float.widget.DefaultCloseView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:paddingHorizontal="50dp"
+    app:closeShapeType="oval"
+    app:inRangeColor="#99FF0000"
+    app:normalColor="#99000000"
+    app:zoomSize="4dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:text="string/delete_floating_window"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_above="@id/tv_delete"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="6dp"
+        android:src="@drawable/libs_debug_ic_delete_24_white" />
+
+</com.youaji.libs.debug.widget._float.widget.DefaultCloseView>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/FTPMainFragment">
+
+    <fragment
+        android:id="@+id/FTPMainFragment"
+        android:name="com.youaji.libs.debug.ftp.FTPMainFragment"
+        android:label="@string/ftp_main_fragment_label"
+        tools:layout="@layout/libs_debug_ftp_fragment_ftp_main">
+
+        <action
+            android:id="@+id/action_FTPMainFragment_to_FTPClientFragment"
+            app:destination="@id/FTPClientFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_FTPMainFragment_to_FTPServerFragment"
+            app:destination="@id/FTPServerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/FTPClientFragment"
+        android:name="com.youaji.libs.debug.ftp.FTPClientFragment"
+        android:label="@string/ftp_client_fragment_label"
+        tools:layout="@layout/libs_debug_ftp_fragment_ftp_client">
+
+        <action
+            android:id="@+id/action_FTPClientFragment_to_FTPClientFragment"
+            app:destination="@id/FTPClientFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/FTPServerFragment"
+        android:name="com.youaji.libs.debug.ftp.FTPServerFragment"
+        android:label="@string/ftp_server_fragment_label"
+        tools:layout="@layout/libs_debug_ftp_fragment_ftp_server" />
+
+</navigation>

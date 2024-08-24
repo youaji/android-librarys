@@ -1,0 +1,113 @@
+[versions]
+# build
+compileSdk = "34"
+minSdk = "23"
+targetSdk = "34"
+# plugin
+agp = "8.3.1"
+kotlin = "1.9.20"
+mavenPublish = "0.29.0"
+# test
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+# androidx
+androidxAppcompat = "1.6.1"
+androidxCoreKTX = "1.10.1"
+androidxActivityKTX = "1.2.3"
+androidxFragmentKTX = "1.3.5"
+androidxStartupRuntime = "1.0.0"
+androidxConstraintlayout = "2.1.4"
+androidxRecyclerView = "1.2.1"
+androidxSwipeRefreshLayout = "1.1.0"
+androidxDatabindingRuntime = "7.2.2"
+androidxNavigationUIKTX = "2.3.5"
+androidxNavigationFragmentKTX = "2.3.5"
+androidxLifecycleRuntimeKTX = "2.5.1"
+androidxLifecycleLivedataKTX = "2.4.1"
+androidxLifecycleViewmodelKTX = "2.5.1"
+# google
+googleMaterial = "1.10.0"
+# open source
+openMMKV = "1.3.1"
+openLogger = "2.2.0"
+openPermissionx = "1.8.0"
+openImmersionbar = "3.2.2"
+# youaji
+youajiPublisher = "1.0.1"
+youajiDebug = "1.0.0"
+youajiDebugCrash = "1.0.0"
+youajiDebugFile = "1.0.0"
+youajiDebugFtp = "1.0.0"
+youajiEventBus = "1.0.0"
+youajiFtpClient = "1.0.0"
+youajiFtpServer = "1.0.0"
+youajiJsBridge = "1.0.0"
+youajiOpencv = "1.0.0"
+youajiPictureViewer = "1.0.0"
+youajiSocket = "1.0.0"
+youajiTcpClient = "1.0.0"
+youajiTcpCore = "1.0.0"
+youajiTcpInterfaces = "1.0.0"
+youajiTcpServer = "1.0.0"
+youajiUI = "1.0.0"
+youajiUtil = "1.0.0"
+youajiWidget = "1.0.0"
+youajiYUV = "1.0.0"
+
+[libraries]
+# test
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+# androidx
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKTX" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivityKTX" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragmentKTX" }
+androidx-startup-runtime = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidxStartupRuntime" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerView" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "androidxSwipeRefreshLayout" }
+androidx-databinding-runtime = { group = "androidx.databinding", name = "databinding-runtime", version.ref = "androidxDatabindingRuntime" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigationUIKTX" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidxNavigationFragmentKTX" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycleRuntimeKTX" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidxLifecycleLivedataKTX" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycleViewmodelKTX" }
+# google
+google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial" }
+# open source
+open-mmkv = { group = "com.tencent", name = "mmkv", version.ref = "openMMKV" }
+open-logger = { group = "com.orhanobut", name = "logger", version.ref = "openLogger" }
+open-permissionx = { group = "com.guolindev.permissionx", name = "permissionx", version.ref = "openPermissionx" }
+open-immersionbar = { group = "com.geyifeng.immersionbar", name = "immersionbar", version.ref = "openImmersionbar" }  # 基础依赖包，必须要依赖
+open-immersionbar-ktx = { group = "com.geyifeng.immersionbar", name = "immersionbar-ktx", version.ref = "openImmersionbar" }# kotlin扩展（可选）
+# youaji
+youaji-debug = { group = "com.youaji.android", name = "libs-debug", version.ref = "youajiDebug" }
+youaji-debug-no-op = { group = "com.youaji.android", name = "libs-debug-no-op", version.ref = "youajiDebug" }
+youaji-debug-crash = { group = "com.youaji.android", name = "libs-debug-crash", version.ref = "youajiDebugCrash" }
+youaji-debug-file = { group = "com.youaji.android", name = "libs-debug-file", version.ref = "youajiDebugFile" }
+youaji-debug-ftp = { group = "com.youaji.android", name = "libs-debug-ftp", version.ref = "youajiDebugFtp" }
+youaji-event-bus = { group = "com.youaji.android", name = "libs-event-bus", version.ref = "youajiEventBus" }
+youaji-ftp-client = { group = "com.youaji.android", name = "libs-ftp-client", version.ref = "youajiFtpClient" }
+youaji-ftp-server = { group = "com.youaji.android", name = "libs-ftp-server", version.ref = "youajiFtpServer" }
+youaji-js-bridge = { group = "com.youaji.android", name = "libs-js-bridge", version.ref = "youajiJsBridge" }
+youaji-opencv = { group = "com.youaji.android.libs.opencv", name = "libs-opencv", version.ref = "youajiOpencv" }
+youaji-picture-viewer = { group = "com.youaji.android.libs.picture.viewer", name = "libs-picture-viewer", version.ref = "youajiPictureViewer" }
+youaji-socket = { group = "com.youaji.android.libs.socket", name = "libs-socket", version.ref = "youajiSocket" }
+youaji-tcp-client = { group = "com.youaji.android.libs.tcp.client", name = "libs-tcp-client", version.ref = "youajiTcpClient" }
+youaji-tcp-core = { group = "com.youaji.android.libs.tcp.core", name = "libs-tcp-core", version.ref = "youajiTcpCore" }
+youaji-tcp-interfaces = { group = "com.youaji.android.libs.tcp.interfaces", name = "libs-tcp-interfaces", version.ref = "youajiTcpInterfaces" }
+youaji-tcp-server = { group = "com.youaji.android.libs.tcp.server", name = "libs-tcp-server", version.ref = "youajiTcpServer" }
+youaji-ui = { group = "com.youaji.android.libs.ui", name = "libs-ui", version.ref = "youajiUI" }
+youaji-util = { group = "com.youaji.android.libs.util", name = "libs-util", version.ref = "youajiUtil" }
+youaji-widget = { group = "com.youaji.android.libs.widget", name = "libs-widget", version.ref = "youajiWidget" }
+youaji-yuv = { group = "com.youaji.android.libs.yuv", name = "libs-yuv", version.ref = "youajiYUV" }
+
+[plugins]
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+

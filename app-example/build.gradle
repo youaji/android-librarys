@@ -1,0 +1,76 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.youaji.example.librarys'
+    compileSdk libs.versions.compileSdk.get().toInteger()
+
+    defaultConfig {
+        applicationId "com.youaji.example.librarys"
+
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    implementation libs.google.material
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.startup.runtime
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.navigation.ui.ktx
+    implementation libs.androidx.navigation.fragment.ktx
+
+    moduleDebugImplementation("${libs.youaji.debug.asProvider().get()}")
+    moduleReleaseImplementation("${libs.youaji.debug.no.op.get()}")
+
+    moduleImplementation("${libs.youaji.event.bus.get()}")
+    moduleImplementation("${libs.youaji.ftp.client.get()}")
+    moduleImplementation("${libs.youaji.ftp.server.get()}")
+    moduleImplementation("${libs.youaji.js.bridge.get()}")
+    moduleImplementation("${libs.youaji.opencv.get()}")
+    moduleImplementation("${libs.youaji.picture.viewer.get()}")
+    moduleImplementation("${libs.youaji.socket.get()}")
+    moduleImplementation("${libs.youaji.tcp.client.get()}")
+    moduleImplementation("${libs.youaji.tcp.server.get()}")
+    moduleImplementation("${libs.youaji.ui.get()}")
+    moduleImplementation("${libs.youaji.util.get()}")
+    moduleImplementation("${libs.youaji.widget.get()}")
+    moduleImplementation("${libs.youaji.yuv.get()}")
+}

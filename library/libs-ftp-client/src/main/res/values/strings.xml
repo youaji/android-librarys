@@ -1,0 +1,17 @@
+<resources>
+    <string name="mtm_accept_cert">Accept unknown certificate?</string>
+    <string name="mtm_trust_anchor">The server certificate is not signed by a known Certificate Authority.\n\n%s</string>
+    <string name="mtm_cert_expired">The server certificate is expired\n\n%s.</string>
+    <string name="mtm_unknown_err">%s\n\n%s</string>
+    <string name="mtm_parsing_err">Parsing error: %s</string>
+    <string name="mtm_accept_server_name">Accept mismatching server name?</string>
+    <string name="mtm_cert_details">Certificate details:\n%s</string>
+    <string name="mtm_decision_always">Trust</string>
+    <string name="mtm_decision_abort">Abort</string>
+    <string name="mtm_cert_details_properties">%s\nValid from %s to %s\nSHA-1: %s\nSHA-256: %s\nSigned by: %s</string>
+
+    <string name="host_key_unknown">Can\'t establish authenticity</string>
+    <string name="host_key_unknown_msg">The authenticity of host "%1$s" can\'t be established.\n%2$s key fingerprint is %3$s.</string>
+    <string name="host_key_changed">WARNING: Host key has changed</string>
+    <string name="host_key_changed_msg">The host key of "%1$s" has changed. Someone could be eavesdropping on you right now (man-in-the-middle attack)!\n\nIt is also possible that the host key has just been changed.\nThe fingerprint for the %2$s key sent by the remote host is %3$s.</string>
+</resources>

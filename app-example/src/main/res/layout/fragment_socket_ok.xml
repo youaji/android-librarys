@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    android:orientation="vertical"
+    tools:context=".ui.socket.SocketOkFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:translationZ="5dp">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            android:spinnerMode="dropdown"
+            android:translationZ="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layout_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/text_ip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/shape_c5_sowhite"
+                android:digits="0123456789."
+                android:elevation="5dp"
+                android:hint="IP"
+                android:inputType="numberSigned"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="xx:xx:xx:xx" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/text_port"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_c5_sowhite"
+                android:elevation="5dp"
+                android:hint="PORT"
+                android:inputType="number"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_80"
+                android:textSize="16sp"
+                android:translationZ="5dp"
+                tools:ignore="HardcodedText"
+                tools:text="xxxx" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:text="开始"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_stop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:text="停止"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:orientation="vertical"
+        android:translationZ="5dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/shape_c5_sowhite"
+            android:elevation="5dp"
+            android:hint="MESSAGE"
+            android:maxLines="3"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_80"
+            android:textSize="16sp"
+            android:translationZ="5dp"
+            tools:ignore="HardcodedText"
+            tools:text="xxxx" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="发送"
+            android:textColor="@color/white"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:background="@color/white"
+        android:elevation="5dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:translationZ="5dp">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/check_hex_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="十六进制值"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_charset_utf_8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="UTF-8"
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:id="@+id/radio_charset_utf_16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="UTF-16"
+                tools:ignore="HardcodedText" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout_log"
+        layout="@layout/include_log_print"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

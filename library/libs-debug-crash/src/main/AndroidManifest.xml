@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.youaji.libs.debug.crash">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application>
+        <activity
+            android:name=".CrashActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CrashDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".test.CrashTestActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".KillSelfService" />
+
+        <provider
+            android:name=".CrashFileProvider"
+            android:authorities="${applicationId}.crashFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/crash_file_provider" />
+        </provider>
+    </application>
+
+</manifest>

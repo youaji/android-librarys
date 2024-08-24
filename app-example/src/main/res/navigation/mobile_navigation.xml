@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.youaji.example.librarys.ui.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_lib_socket"
+        android:name="com.youaji.example.librarys.ui.LibSocketFragment"
+        android:label="@string/menu_lib_socket"
+        tools:layout="@layout/fragment_lib_socket" />
+
+    <fragment
+        android:id="@+id/nav_lib_tcp"
+        android:name="com.youaji.example.librarys.ui.LibTCPFragment"
+        android:label="@string/menu_lib_tcp"
+        tools:layout="@layout/fragment_lib_tcp" />
+
+    <fragment
+        android:id="@+id/nav_lib_opencv"
+        android:name="com.youaji.example.librarys.ui.LibOpenCVFragment"
+        android:label="@string/menu_lib_opencv"
+        tools:layout="@layout/fragment_lib_opencv" />
+
+    <fragment
+        android:id="@+id/nav_lib_yuv"
+        android:name="com.youaji.example.librarys.ui.LibYUVFragment"
+        android:label="@string/menu_lib_yuv"
+        tools:layout="@layout/fragment_lib_yuv" />
+
+    <fragment
+        android:id="@+id/nav_lib_ftp_client"
+        android:name="com.youaji.example.librarys.ui.LibFTPClientFragment"
+        android:label="@string/menu_lib_ftp_client"
+        tools:layout="@layout/fragment_lib_ftp_client" />
+
+    <fragment
+        android:id="@+id/nav_wifi"
+        android:name="com.youaji.example.librarys.ui.WiFiFragment"
+        android:label="@string/menu_wifi"
+        tools:layout="@layout/fragment_wifi" />
+
+</navigation>

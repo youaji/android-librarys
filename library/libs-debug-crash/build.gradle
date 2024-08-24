@@ -1,0 +1,67 @@
+plugins {
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+}
+
+android {
+    namespace 'com.youaji.libs.debug.crash'
+    compileSdk libs.versions.compileSdk.get().toInteger()
+
+    defaultConfig {
+        versionName libs.versions.youajiDebugCrash.get()
+
+        minSdk libs.versions.minSdk.get().toInteger()
+        targetSdk libs.versions.targetSdk.get().toInteger()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11"
+                arguments '-DANDROID_STL=c++_static'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+}
+
+dependencies {
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    implementation libs.google.material
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.swiperefreshlayout
+
+    moduleImplementation("${libs.youaji.ui.get()}")
+    moduleImplementation("${libs.youaji.util.get()}")
+}
+
+if (file("${rootProject.projectDir}/publish.gradle").exists()) {
+    apply from: "${rootProject.projectDir}/publish.gradle"
+    initPublisher("libs-debug-crash", "${libs.versions.youajiDebugCrash.get()}", "android debug crash Library")
+}

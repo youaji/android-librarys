@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="libs_ui_tag_clickable_adapter_delegate_holder" type="id" />
+    <item name="libs_ui_tag_clickable_adapter_delegate_data" type="id" />
+    <item name="libs_ui_tag_clickable_adapter_delegate_click_time" type="id" />
+</resources>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- => start RadiusCardView -->
+    <declare-styleable name="RadiusCardView">
+        <!--        左上圆角大小-->
+        <attr name="top_left_radius" format="dimension" />
+        <!--        右上圆角大小-->
+        <attr name="top_right_radius" format="dimension" />
+        <!--        右下圆角大小-->
+        <attr name="bottom_right_radius" format="dimension" />
+        <!--        左下圆角大小-->
+        <attr name="bottom_left_radius" format="dimension" />
+    </declare-styleable>
+    <!-- => end RadiusCardView -->
+
+    <!-- => start RangeBarView -->
+    <declare-styleable name="RangeBarView">
+        <attr name="lineColor" format="color" />
+        <attr name="activeLineColor" format="color" />
+        <attr name="fixedLineColor" format="color" />
+        <attr name="tickColor" format="color" />
+        <attr name="activeTickColor" format="color" />
+        <attr name="fixedTickColor" format="color" />
+        <attr name="activeThumbColor" format="color" />
+        <attr name="activeFocusThumbColor" format="color" />
+        <attr name="fixedThumbColor" format="color" />
+
+        <attr name="labelColor" format="color" />
+        <attr name="activeLabelColor" format="color" />
+        <attr name="activeThumbLabelColor" format="color" />
+        <attr name="fixedLabelColor" format="color" />
+        <attr name="fixedThumbLabelColor" format="color" />
+
+        <attr name="activeFocusThumbAlpha" format="float" />
+
+        <attr name="lineThickness" format="dimension" />
+        <attr name="activeLineThickness" format="dimension" />
+        <attr name="fixedLineThickness" format="dimension" />
+
+        <attr name="activeThumbRadius" format="dimension" />
+        <attr name="activeThumbFocusRadius" format="dimension" />
+        <attr name="fixedThumbRadius" format="dimension" />
+        <attr name="tickRadius" format="dimension" />
+        <attr name="activeTickRadius" format="dimension" />
+        <attr name="fixedTickRadius" format="dimension" />
+        <attr name="labelMarginBottom" format="dimension" />
+        <attr name="labelFontSize" format="dimension" />
+        <attr name="minDistanceBetweenLabels" format="dimension" />
+        <attr name="innerRangePadding" format="dimension" />
+        <attr name="innerRangePaddingLeft" format="dimension" />
+        <attr name="innerRangePaddingRight" format="dimension" />
+
+        <attr name="start" format="integer" />
+        <attr name="end" format="integer" />
+        <attr name="startFixed" format="integer" />
+        <attr name="endFixed" format="integer" />
+        <attr name="count" format="integer" />
+        <attr name="minDistance" format="integer" />
+        <attr name="maxDistance" format="integer" />
+
+        <attr name="movable" format="boolean" />
+        <attr name="showFixedLine" format="boolean" />
+        <attr name="showTicks" format="boolean" />
+        <attr name="showActiveTicks" format="boolean" />
+        <attr name="showFixedTicks" format="boolean" />
+        <attr name="showLabels" format="boolean" />
+        <attr name="isRange" format="boolean" />
+    </declare-styleable>
+    <!-- => end RangeBarView -->
+
+    <!-- => start YouajiImageView -->
+    <declare-styleable name="YouajiImageView">
+        <attr name="image_border_color" format="color" />
+        <attr name="image_border_width" format="dimension" />
+        <attr name="image_press_alpha" format="integer" />
+        <attr name="image_press_color" format="color" />
+        <attr name="image_radius" format="dimension" />
+        <attr name="image_shape_type" format="enum">
+            <enum name="none" value="0" />
+            <enum name="round" value="1" />
+            <enum name="rectangle" value="2" />
+        </attr>
+    </declare-styleable>
+    <!-- => end YouajiImageView -->
+
+    <!-- => start shine -->
+    <declare-styleable name="PorterShapeImageView">
+        <attr name="siShape" format="integer|reference" />
+    </declare-styleable>
+    <declare-styleable name="ShineButton">
+        <attr name="shine_checked_color" format="color" />
+        <attr name="shine_unchecked_color" format="color" />
+        <attr name="shine_unchecked_resource" format="reference|color" />
+        <attr name="shine_checked_resource" format="reference|color" />
+        <attr name="shine_count" format="integer" />
+        <attr name="shine_turn_angle" format="float" />
+        <attr name="shine_small_shine_offset_angle" format="float" />
+        <attr name="shine_enable_flashing" format="boolean" />
+        <attr name="shine_allow_random_color" format="boolean" />
+        <attr name="shine_sb_border_color" format="color" />
+        <attr name="shine_small_shine_color" format="color" />
+        <attr name="shine_big_shine_color" format="color" />
+        <attr name="shine_animation_duration" format="integer" />
+        <attr name="shine_click_animation_duration" format="integer" />
+        <attr name="shine_distance_multiple" format="float" />
+        <attr name="shine_size" format="dimension" />
+    </declare-styleable>
+    <!-- => end shine -->
+
+    <!-- => start SwitchButton -->
+    <declare-styleable name="SwitchButton">
+        <attr name="sb_shadow_radius" format="reference|dimension" />
+        <attr name="sb_shadow_offset" format="reference|dimension" />
+        <attr name="sb_shadow_color" format="reference|color" />
+        <attr name="sb_uncheck_color" format="reference|color" />
+        <attr name="sb_checked_color" format="reference|color" />
+
+        <attr name="sb_border_width" format="reference|dimension" />
+        <attr name="sb_checkline_color" format="reference|color" />
+        <attr name="sb_checkline_width" format="reference|dimension" />
+        <attr name="sb_uncheckcircle_color" format="reference|color" />
+        <attr name="sb_uncheckcircle_width" format="reference|dimension" />
+        <attr name="sb_uncheckcircle_radius" format="reference|dimension" />
+
+        <attr name="sb_checked" format="reference|boolean" />
+        <attr name="sb_shadow_effect" format="reference|boolean" />
+        <attr name="sb_effect_duration" format="reference|integer" />
+        <attr name="sb_button_color" format="reference|color" />
+        <attr name="sb_show_indicator" format="reference|boolean" />
+        <attr name="sb_background" format="reference|color" />
+        <attr name="sb_enable_effect" format="reference|boolean" />
+
+        <attr name="sb_checkedbutton_color" format="reference|color" />
+        <attr name="sb_uncheckbutton_color" format="reference|color" />
+    </declare-styleable>
+    <!-- => end SwitchButton -->
+
+    <!-- => start 流布局 -->
+    <declare-styleable name="FlowLayout">
+        <!--支持折叠 -->
+        <attr name="flow_fold" format="boolean" />
+        <!--折叠时的行数（支持折叠情况下） -->
+        <attr name="flow_foldLines" format="integer" />
+        <!--平均分配 -->
+        <attr name="flow_equally" format="boolean" />
+        <!--平局分配一行的数量 -->
+        <attr name="flow_equally_count" format="integer" />
+        <!--水平间距 -->
+        <attr name="flow_horizontalSpacing" format="dimension" />
+        <!--竖直间距 -->
+        <attr name="flow_verticalSpacing" format="dimension" />
+        <!--左右对齐 -->
+        <attr name="flow_gravity">
+            <enum name="LEFT" value="0" />
+            <enum name="RIGHT" value="1" />
+        </attr>
+    </declare-styleable>
+    <!-- => end 流布局 -->
+
+    <!--<editor-fold desc="Stepper">-->
+    <declare-styleable name="Stepper">
+        <attr name="min" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="value" format="integer" />
+        <attr name="step" format="integer" />
+        <attr name="text" format="string" />
+        <attr name="mode" format="enum">
+            <enum name="auto" value="0" />
+            <enum name="custom" value="1" />
+        </attr>
+        <attr name="stepper_background" format="color|reference" />
+        <attr name="stepper_buttonBackground" format="color|reference" />
+        <attr name="stepper_contentBackground" format="color|reference" />
+        <attr name="stepper_contentTextColor" format="color" />
+        <attr name="stepper_contentTextSize" format="float" />
+        <attr name="stepper_leftButtonBackground" format="color|reference" />
+        <attr name="stepper_rightButtonBackground" format="color|reference" />
+        <attr name="stepper_leftButtonResources" format="color|reference" />
+        <attr name="stepper_rightButtonResources" format="color|reference" />
+    </declare-styleable>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="RangeBox">-->
+    <declare-styleable name="RangeBox">
+        <!-- 开始值 -->
+        <attr name="tickStart" format="integer" />
+        <!-- 结束值 -->
+        <attr name="tickEnd" format="integer" />
+        <!-- 分隔个数 -->
+        <attr name="tickCount" format="integer" />
+        <!-- 刻度线宽度 -->
+        <attr name="tickLineWidth" format="dimension" />
+        <!-- 刻度线颜色 -->
+        <attr name="tickLineColor" format="color" />
+        <!-- 刻度文字大小 -->
+        <attr name="tickTextSize" format="dimension" />
+        <!-- 刻度文字颜色 -->
+        <attr name="tickTextColor" format="color" />
+        <!-- 选中的开始下标 1~tickCount -->
+        <attr name="thumbStartIndex" format="integer" />
+        <!-- 选中的结束下标 1~tickCount-->
+        <attr name="thumbEndIndex" format="integer" />
+        <!-- 选中的颜色 -->
+        <attr name="thumbColor" format="color" />
+        <!-- 选中的线条宽度 -->
+        <attr name="thumbLineWidth" format="dimension" />
+    </declare-styleable>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="WaterMarkView">-->
+    <declare-styleable name="WaterMarkView">
+        <attr name="markerText" format="reference|string" />
+        <attr name="lineHeight" format="dimension" />
+        <attr name="markerTextSize" format="dimension" />
+        <attr name="markerTextColor" format="color" />
+        <attr name="markerSpace" format="dimension" />
+        <attr name="fixSpace" format="dimension" />
+        <attr name="radian" format="float" />
+        <attr name="android:alpha" />
+    </declare-styleable>
+    <!--</editor-fold>-->
+
+</resources>
