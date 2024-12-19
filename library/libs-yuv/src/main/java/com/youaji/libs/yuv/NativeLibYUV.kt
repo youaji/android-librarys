@@ -1,10 +1,19 @@
 package com.youaji.libs.yuv
 
+import android.media.Image
+import java.nio.ByteBuffer
+
 class NativeLibYUV {
     companion object {
         init {
             System.loadLibrary("_yuv")
         }
+    }
+
+    fun image2NV21(image: Image): ByteArray {
+        val nv21Buffer = ByteArray(image.width * image.height * 3 / 2)
+        yuv4208882nv21(image.width, image.height, image.planes[0].buffer, image.planes[2].buffer, nv21Buffer)
+        return nv21Buffer
     }
 
     /**
@@ -42,4 +51,14 @@ class NativeLibYUV {
      * @param height
      */
     external fun argb2i420(argb32Buffer: ByteArray, i420Buffer: ByteArray, width: Int, height: Int): Boolean
+
+    /**
+     * yuv420_888 to nv21
+     * @param width
+     * @param height
+     * @param yPlane
+     * @param vPlane
+     * @param nv21Buffer
+     */
+    external fun yuv4208882nv21(width: Int, height: Int, yPlane: ByteBuffer, vPlane: ByteBuffer, nv21Buffer: ByteArray)
 }

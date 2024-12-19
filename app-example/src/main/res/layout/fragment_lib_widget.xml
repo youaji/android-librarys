@@ -19,9 +19,7 @@
             app:stepper_contentBackground="@color/red"
             app:stepper_contentTextColor="@color/white"
             app:stepper_contentTextSize="30"
-            app:stepper_leftButtonResources="@drawable/ic_state_arrow_back_24"
-            app:stepper_leftButtonWidth="160dp"
-            app:stepper_rightButtonWidth="160dp" />
+            app:stepper_leftButtonResources="@drawable/ic_state_arrow_back_24" />
 
     </LinearLayout>
 

@@ -10,9 +10,9 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/google' }// 阿里云google仓
         maven { url 'https://maven.aliyun.com/repository/public' }// 阿里云central仓和jcenter仓的聚合仓
+        mavenCentral()
         google()
     }
 }

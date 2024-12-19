@@ -170,3 +170,22 @@ Java_com_youaji_libs_yuv_NativeLibYUV_argb2i420(
     env->ReleaseByteArrayElements(dst_yuv, (jbyte *) dst_yuv_data, 0);
     return JNI_TRUE;
 }
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_youaji_libs_yuv_NativeLibYUV_yuv4208882nv21(
+        JNIEnv *env,
+        jobject  /* this */,
+        jint w, jint h,
+        jobject yPlane, jobject vPlane,
+        jbyteArray bufferArray
+) {
+    auto *y_buffer = (jbyte *) env->GetDirectBufferAddress(yPlane);
+    auto *v_buffer = (jbyte *) env->GetDirectBufferAddress(vPlane);
+    jbyte *dst_data = env->GetByteArrayElements(bufferArray, nullptr);
+    int len = w * h;
+    memcpy(dst_data, y_buffer, static_cast<size_t>(len));
+    jlong vBufferCapacity = env->GetDirectBufferCapacity(vPlane);
+    memcpy(dst_data + len, v_buffer, static_cast<size_t>(vBufferCapacity));
+    env->ReleaseByteArrayElements(bufferArray, dst_data, 0);
+}

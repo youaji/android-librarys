@@ -53,7 +53,7 @@ youajiTcpServer = "1.0.0"
 youajiUI = "1.0.0"
 youajiUtil = "1.0.0"
 youajiWidget = "1.0.0"
-youajiYUV = "1.0.0"
+youajiYUV = "1.0.1"
 
 [libraries]
 # test
