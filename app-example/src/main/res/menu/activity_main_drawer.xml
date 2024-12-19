@@ -23,6 +23,9 @@
             android:id="@+id/nav_menu_lib_ftp_client"
             android:title="@string/menu_lib_ftp_client" />
         <item
+            android:id="@+id/nav_menu_lib_widget"
+            android:title="@string/menu_lib_widget" />
+        <item
             android:id="@+id/nav_menu_wifi"
             android:title="@string/menu_wifi" />
 

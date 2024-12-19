@@ -1,27 +1,30 @@
 package com.youaji.libs.widget.stepper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.animation.AccelerateInterpolator;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-//import com.nineoldandroids.animation.Animator;
-//import com.nineoldandroids.animation.ValueAnimator;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+
 import com.youaji.libs.widget.R;
 
 import java.lang.ref.WeakReference;
 
-public class Stepper extends RelativeLayout implements View.OnTouchListener
-//        , ValueAnimator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
-{
+@SuppressWarnings("unused")
+public class Stepper extends RelativeLayout implements View.OnTouchListener {
     private OnStepperChangeListener listener;
     private TextView tvStepperContent;
     private ImageView ivStepperMinus, ivStepperPlus;
@@ -36,9 +39,6 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
     private static final long UPDATE_DURATION_FAST = 100;//数值更新频率-快
     private int valueSlowStep = 1;//慢速递增值 步长
 
-    //按下的初始x值
-    private float startX = 0;
-    private float startStepperContentLeft = 0;
     private boolean hasStepperContentLeft = false;
     //按下时间
     private long startTime = 0;
@@ -85,13 +85,13 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     public Stepper(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initViews(attrs);
+        initViews(context, attrs);
     }
 
-    private void initViews(AttributeSet attrs) {
+    @SuppressLint("ClickableViewAccessibility")
+    private void initViews(Context context, AttributeSet attrs) {
 
-
-        LayoutInflater.from(getContext()).inflate(R.layout.libs_widget_stepper, this, true);
+        LayoutInflater.from(context).inflate(R.layout.libs_widget_stepper, this, true);
         tvStepperContent = (TextView) findViewById(R.id.tvStepperContent);
         ivStepperMinus = (ImageView) findViewById(R.id.ivStepperMinus);
         ivStepperPlus = (ImageView) findViewById(R.id.ivStepperPlus);
@@ -103,59 +103,82 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
         Drawable rightButtonResources = null;
         Drawable leftButtonBackground = null;
         Drawable rightButtonBackground = null;
-        int contentTextColor = getResources().getColor(R.color.libs_widget_stepper_text);
+
+        int contentTextColor = ContextCompat.getColor(context, R.color.libs_widget_stepper_text);
         float contentTextSize = 0;
+        float leftButtonWidth = 0;
+        float rightButtonWidth = 0;
+        float leftButtonPadding = 0;
+        float rightButtonPadding = 0;
+
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.Stepper);
-            int modeValue = a.getInt(R.styleable.Stepper_mode, Mode.AUTO.getValue());
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Stepper);
+            int modeValue = a.getInt(R.styleable.Stepper_stepper_mode, Mode.AUTO.getValue());
             mode = Mode.valueOf(modeValue);
-            minValue = a.getInt(R.styleable.Stepper_min, minValue);
-            maxValue = a.getInt(R.styleable.Stepper_max, maxValue);
-            value = valueRangeCheck(a.getInt(R.styleable.Stepper_value, value));
-            valueSlowStep = a.getInt(R.styleable.Stepper_step, valueSlowStep);
+            minValue = a.getInt(R.styleable.Stepper_stepper_min, minValue);
+            maxValue = a.getInt(R.styleable.Stepper_stepper_max, maxValue);
+            value = valueRangeCheck(a.getInt(R.styleable.Stepper_stepper_value, value));
+            valueSlowStep = a.getInt(R.styleable.Stepper_stepper_step, valueSlowStep);
             if (valueSlowStep <= 0) valueSlowStep = 1;
-            text = a.getString(R.styleable.Stepper_text);
+            text = a.getString(R.styleable.Stepper_stepper_text);
 
             background = a.getDrawable(R.styleable.Stepper_stepper_background);
-            contentBackground = a.getDrawable(R.styleable.Stepper_stepper_contentBackground);
+
+            leftButtonWidth = a.getDimensionPixelOffset(R.styleable.Stepper_stepper_leftButtonWidth, 0);
+            rightButtonWidth = a.getDimensionPixelOffset(R.styleable.Stepper_stepper_rightButtonWidth, 0);
+            leftButtonPadding = a.getDimensionPixelOffset(R.styleable.Stepper_stepper_leftButtonPadding, 0);
+            rightButtonPadding = a.getDimensionPixelOffset(R.styleable.Stepper_stepper_rightButtonPadding, 0);
             leftButtonResources = a.getDrawable(R.styleable.Stepper_stepper_leftButtonResources);
             rightButtonResources = a.getDrawable(R.styleable.Stepper_stepper_rightButtonResources);
             leftButtonBackground = a.getDrawable(R.styleable.Stepper_stepper_leftButtonBackground);
             rightButtonBackground = a.getDrawable(R.styleable.Stepper_stepper_rightButtonBackground);
 
+            contentBackground = a.getDrawable(R.styleable.Stepper_stepper_contentBackground);
             contentTextColor = a.getColor(R.styleable.Stepper_stepper_contentTextColor, contentTextColor);
+            contentTextSize = a.getDimension(R.styleable.Stepper_stepper_contentTextSize, 0);
 
-            contentTextSize = a.getFloat(R.styleable.Stepper_stepper_contentTextSize, 0);
             a.recycle();
         }
 
         if (background != null) {
-            setBackgroundDrawable(background);
+            setBackground(background);
         } else {
             setContentBackground(R.color.libs_widget_stepper_button_press);
         }
-
-
-        if (contentBackground != null) {
-            setContentBackground(contentBackground);
+        Log.d("sssssssssss", "leftButtonWidth: "+leftButtonWidth +" rightButtonWidth:"+rightButtonWidth);
+        if (leftButtonWidth > 0) {
+            ViewGroup.LayoutParams layoutParams = ivStepperMinus.getLayoutParams();
+            layoutParams.width = (int) leftButtonWidth;
+            layoutParams.height = (int) leftButtonWidth;
+            ivStepperMinus.setLayoutParams(layoutParams);
         }
+        if (rightButtonWidth > 0) {
+            ViewGroup.LayoutParams layoutParams = ivStepperPlus.getLayoutParams();
+            layoutParams.width = (int) rightButtonWidth;
+            layoutParams.height = (int) rightButtonWidth;
+            ivStepperPlus.setLayoutParams(layoutParams);
+        }
+        if (leftButtonPadding > 0)
+            ivStepperMinus.setPadding((int) leftButtonPadding, (int) leftButtonPadding, (int) leftButtonPadding, (int) leftButtonPadding);
+        if (rightButtonPadding > 0)
+            ivStepperPlus.setPadding((int) rightButtonPadding, (int) rightButtonPadding, (int) rightButtonPadding, (int) rightButtonPadding);
+
+        if (leftButtonResources != null)
+            setLeftButtonResources(leftButtonResources);
+        if (rightButtonResources != null)
+            setRightButtonResources(rightButtonResources);
+        if (leftButtonBackground != null)
+            ivStepperMinus.setBackground(leftButtonBackground);
+        if (rightButtonBackground != null)
+            ivStepperPlus.setBackground(rightButtonBackground);
+
+        if (contentBackground != null)
+            setContentBackground(contentBackground);
+
         tvStepperContent.setTextColor(contentTextColor);
+
         if (contentTextSize > 0)
             setContentTextSize(contentTextSize);
-
-        if (leftButtonBackground != null) {
-            ivStepperMinus.setBackgroundDrawable(leftButtonBackground);
-        }
-        if (rightButtonBackground != null) {
-            ivStepperPlus.setBackgroundDrawable(rightButtonBackground);
-        }
-
-        if (leftButtonResources != null) {
-            setLeftButtonResources(leftButtonResources);
-        }
-        if (rightButtonResources != null) {
-            setRightButtonResources(rightButtonResources);
-        }
 
         if (mode == Mode.AUTO)//AUTO模式，写数值到滑动条上
             tvStepperContent.setText(String.valueOf(value));
@@ -178,7 +201,8 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
                 stepTouch = true;
                 postDelayed(updateRunnable, UPDATE_DURATION_SLOW);
                 //非按钮则记录位置
-                startX = event.getX();
+                //按下的初始x值
+                float startX = event.getX();
                 initStartStepperContentLeft();
                 startTime = System.currentTimeMillis();
                 //如果是两边的按钮，分别设置为点击状态
@@ -221,7 +245,7 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
     private void initStartStepperContentLeft() {
         if (hasStepperContentLeft) return;
         hasStepperContentLeft = true;
-        startStepperContentLeft = tvStepperContent.getLeft();
+        float startStepperContentLeft = tvStepperContent.getLeft();
     }
 
     /**
@@ -240,11 +264,9 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 移动位置
-     *
-     * @param x
      */
     private void moveStepperContent(float x) {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         params.leftMargin = (int) x;
         //限制子控件移动必须在视图范围内
         if (params.leftMargin < 0 || (params.leftMargin + tvStepperContent.getWidth()) > getWidth())
@@ -325,10 +347,10 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
 
     static class UpdateRunnable implements Runnable {
-        private WeakReference<Stepper> view;
+        private final WeakReference<Stepper> view;
 
         public UpdateRunnable(Stepper view) {
-            this.view = new WeakReference<Stepper>(view);
+            this.view = new WeakReference<>(view);
         }
 
         public void run() {
@@ -344,9 +366,7 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
     }
 
     /**
-     * 返回当前模式类型
-     *
-     * @return
+     * @return 返回当前模式类型
      */
     public Mode getMode() {
         return mode;
@@ -354,17 +374,13 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 模式设置 AUTO(0) 数值写到滑动条, CUSTOM(1) 自定义文字;
-     *
-     * @param mode
      */
     public void setMode(Mode mode) {
         this.mode = mode;
     }
 
     /**
-     * 获取当前值
-     *
-     * @return
+     * @return 获取当前值
      */
     public int getValue() {
         return value;
@@ -373,7 +389,7 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
     /**
      * 设置当前值
      *
-     * @param value
+     * @param value 当前值
      */
     public void setValue(int value) {
         this.value = valueRangeCheck(value);
@@ -388,9 +404,7 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
     }
 
     /**
-     * 获取最小值
-     *
-     * @return
+     * @return 获取最小值
      */
     public int getMinValue() {
         return minValue;
@@ -398,17 +412,13 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置最小值
-     *
-     * @return
      */
     public void setMinValue(int minValue) {
         this.minValue = minValue;
     }
 
     /**
-     * 获取最大值
-     *
-     * @return
+     * @return 获取最大值
      */
     public int getMaxValue() {
         return maxValue;
@@ -416,17 +426,13 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置最大值
-     *
-     * @return
      */
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;
     }
 
     /**
-     * 获取步长
-     *
-     * @return
+     * @return 获取步长
      */
     public int getValueSlowStep() {
         return valueSlowStep;
@@ -434,8 +440,6 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置步长
-     *
-     * @return
      */
     public void setValueSlowStep(int valueSlowStep) {
         this.valueSlowStep = valueSlowStep;
@@ -443,30 +447,24 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置中间内容滑条颜色
-     *
-     * @param resId
      */
     public void setContentBackground(int resId) {
         tvStepperContent.setBackgroundResource(resId);
     }
 
     public void setContentBackground(Drawable drawable) {
-        tvStepperContent.setBackgroundDrawable(drawable);
+        tvStepperContent.setBackground(drawable);
     }
 
     /**
      * 设置中间内容文字颜色
-     *
-     * @param resId
      */
     public void setContentTextColor(int resId) {
-        tvStepperContent.setTextColor(getResources().getColor(resId));
+        tvStepperContent.setTextColor(ContextCompat.getColor(getContext(), resId));
     }
 
     /**
      * 设置中间内容文字,mode需为Custom才支持
-     *
-     * @param text
      */
     public void setText(String text) {
         tvStepperContent.setText(text);
@@ -474,17 +472,13 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置中间内容文字大小
-     *
-     * @param size
      */
-    public void setContentTextSize(float size) {
-        tvStepperContent.setTextSize(size);
+    public void setContentTextSize(float px) {
+        tvStepperContent.setTextSize(TypedValue.COMPLEX_UNIT_PX, px);
     }
 
     /**
      * 设置按钮背景
-     *
-     * @param resId
      */
     public void setButtonBackGround(int resId) {
         ivStepperMinus.setBackgroundResource(resId);
@@ -493,8 +487,6 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置按钮资源
-     *
-     * @param resId
      */
     public void setLeftButtonResources(int resId) {
         ivStepperMinus.setImageResource(resId);
@@ -502,8 +494,6 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置按钮资源
-     *
-     * @param drawable
      */
     public void setLeftButtonResources(Drawable drawable) {
         ivStepperMinus.setImageDrawable(drawable);
@@ -511,8 +501,6 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置按钮资源
-     *
-     * @param resId
      */
     public void setRightButtonResources(int resId) {
         ivStepperPlus.setImageResource(resId);
@@ -520,8 +508,6 @@ public class Stepper extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 设置按钮资源
-     *
-     * @param drawable
      */
     public void setRightButtonResources(Drawable drawable) {
         ivStepperPlus.setImageDrawable(drawable);

@@ -13,6 +13,7 @@
     <string name="menu_lib_opencv" translatable="false">OpenCV</string>
     <string name="menu_lib_yuv" translatable="false">YUV</string>
     <string name="menu_lib_ftp_client" translatable="false">FTP Client</string>
+    <string name="menu_lib_widget" translatable="false">Widget</string>
     <string name="menu_wifi" translatable="false">WiFi</string>
 
 </resources>

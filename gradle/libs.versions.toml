@@ -93,17 +93,17 @@ youaji-event-bus = { group = "com.youaji.android", name = "libs-event-bus", vers
 youaji-ftp-client = { group = "com.youaji.android", name = "libs-ftp-client", version.ref = "youajiFtpClient" }
 youaji-ftp-server = { group = "com.youaji.android", name = "libs-ftp-server", version.ref = "youajiFtpServer" }
 youaji-js-bridge = { group = "com.youaji.android", name = "libs-js-bridge", version.ref = "youajiJsBridge" }
-youaji-opencv = { group = "com.youaji.android.libs.opencv", name = "libs-opencv", version.ref = "youajiOpencv" }
-youaji-picture-viewer = { group = "com.youaji.android.libs.picture.viewer", name = "libs-picture-viewer", version.ref = "youajiPictureViewer" }
-youaji-socket = { group = "com.youaji.android.libs.socket", name = "libs-socket", version.ref = "youajiSocket" }
-youaji-tcp-client = { group = "com.youaji.android.libs.tcp.client", name = "libs-tcp-client", version.ref = "youajiTcpClient" }
-youaji-tcp-core = { group = "com.youaji.android.libs.tcp.core", name = "libs-tcp-core", version.ref = "youajiTcpCore" }
-youaji-tcp-interfaces = { group = "com.youaji.android.libs.tcp.interfaces", name = "libs-tcp-interfaces", version.ref = "youajiTcpInterfaces" }
-youaji-tcp-server = { group = "com.youaji.android.libs.tcp.server", name = "libs-tcp-server", version.ref = "youajiTcpServer" }
-youaji-ui = { group = "com.youaji.android.libs.ui", name = "libs-ui", version.ref = "youajiUI" }
-youaji-util = { group = "com.youaji.android.libs.util", name = "libs-util", version.ref = "youajiUtil" }
-youaji-widget = { group = "com.youaji.android.libs.widget", name = "libs-widget", version.ref = "youajiWidget" }
-youaji-yuv = { group = "com.youaji.android.libs.yuv", name = "libs-yuv", version.ref = "youajiYUV" }
+youaji-opencv = { group = "com.youaji.android", name = "libs-opencv", version.ref = "youajiOpencv" }
+youaji-picture-viewer = { group = "com.youaji.android", name = "libs-picture-viewer", version.ref = "youajiPictureViewer" }
+youaji-socket = { group = "com.youaji.android", name = "libs-socket", version.ref = "youajiSocket" }
+youaji-tcp-client = { group = "com.youaji.android", name = "libs-tcp-client", version.ref = "youajiTcpClient" }
+youaji-tcp-core = { group = "com.youaji.android", name = "libs-tcp-core", version.ref = "youajiTcpCore" }
+youaji-tcp-interfaces = { group = "com.youaji.android", name = "libs-tcp-interfaces", version.ref = "youajiTcpInterfaces" }
+youaji-tcp-server = { group = "com.youaji.android", name = "libs-tcp-server", version.ref = "youajiTcpServer" }
+youaji-ui = { group = "com.youaji.android", name = "libs-ui", version.ref = "youajiUI" }
+youaji-util = { group = "com.youaji.android", name = "libs-util", version.ref = "youajiUtil" }
+youaji-widget = { group = "com.youaji.android", name = "libs-widget", version.ref = "youajiWidget" }
+youaji-yuv = { group = "com.youaji.android", name = "libs-yuv", version.ref = "youajiYUV" }
 
 [plugins]
 androidLibrary = { id = "com.android.library", version.ref = "agp" }

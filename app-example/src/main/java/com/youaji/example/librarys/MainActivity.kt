@@ -33,6 +33,7 @@ class MainActivity : BasicBindingActivity<ActivityMainBinding>() {
                 R.id.nav_menu_lib_opencv -> R.id.nav_lib_opencv
                 R.id.nav_menu_lib_yuv -> R.id.nav_lib_yuv
                 R.id.nav_menu_lib_ftp_client -> R.id.nav_lib_ftp_client
+                R.id.nav_menu_lib_widget -> R.id.nav_lib_widget
                 R.id.nav_menu_wifi -> R.id.nav_wifi
                 else -> throw IllegalArgumentException("未知菜单id，没实现该逻辑？")
             }
