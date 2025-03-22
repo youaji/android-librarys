@@ -10,8 +10,13 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.result.contract.ActivityResultContracts
 import com.youaji.example.librarys.databinding.FragmentLibOpencvBinding
+import com.youaji.libs.opencv4.NativeOpenCV4
 import com.youaji.libs.ui.basic.BasicBindingFragment
 import com.youaji.libs.util.design.alert
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.opencv.android.Utils
 import org.opencv.core.Core
 import org.opencv.core.Mat
@@ -80,7 +85,7 @@ class LibOpenCVFragment : BasicBindingFragment<FragmentLibOpencvBinding>() {
             @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.textAlpha.text = "alpha[${progress / 100.0}]"
-                addWeighted()
+//                addWeighted()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -91,7 +96,7 @@ class LibOpenCVFragment : BasicBindingFragment<FragmentLibOpencvBinding>() {
             @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.textBeta.text = "beta[${progress / 100.0}]"
-                addWeighted()
+//                addWeighted()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -102,7 +107,7 @@ class LibOpenCVFragment : BasicBindingFragment<FragmentLibOpencvBinding>() {
             @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.textGamma.text = "gamma[${progress / 100.0}]"
-                addWeighted()
+//                addWeighted()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -112,7 +117,7 @@ class LibOpenCVFragment : BasicBindingFragment<FragmentLibOpencvBinding>() {
         binding.seekPipRatio.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.textPipRatio.text = "pip ratio[${(binding.seekPipRatio.progress + 3) / 10.0}]"
-                addWeighted()
+//                addWeighted()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -186,16 +191,11 @@ class LibOpenCVFragment : BasicBindingFragment<FragmentLibOpencvBinding>() {
     }
 
     private fun addWeighted() {
+        showLoadingView()
         if (bitmap1 == null || bitmap2 == null) {
+            showContentView()
             return
         }
-
-        val mat1 = Mat()
-        val mat2 = Mat()
-        val matResult = Mat()
-        Utils.bitmapToMat(bitmap1, mat1)
-        Utils.bitmapToMat(bitmap2, mat2)
-
         val bitmap1Width = bitmap1?.width ?: 0
         val bitmap1Height = bitmap1?.height ?: 0
         val bitmap1Ratios = bitmap1Width.toDouble() / bitmap1Height.toDouble()
@@ -204,19 +204,37 @@ class LibOpenCVFragment : BasicBindingFragment<FragmentLibOpencvBinding>() {
         val bitmap2Ratios = bitmap2Width.toDouble() / bitmap2Height.toDouble()
         if (bitmap1Ratios != bitmap2Ratios) {
             alert("尺寸不一致")
+            showContentView()
             return
         }
+        val pipEnable = binding.switchPip.isChecked
+        CoroutineScope(Dispatchers.IO).launch {
+            val mat1 = Mat()
+            val mat2 = Mat()
+            Utils.bitmapToMat(bitmap1, mat1)
+            Utils.bitmapToMat(bitmap2, mat2)
 
-        val alpha = binding.seekAlpha.progress / 100.0
-        val beta = binding.seekBeta.progress / 100.0
-        val gamma = binding.seekGamma.progress / 100.0
-        val pipRatio = (binding.seekPipRatio.progress + 3) / 10.0
-        pipAndWeighted(mat1, mat2, matResult, getPipSize(pipRatio), alpha, beta, gamma, binding.switchPip.isChecked)
+            val alpha = binding.seekAlpha.progress / 100.0
+            val beta = binding.seekBeta.progress / 100.0
+            val gamma = binding.seekGamma.progress / 100.0
+            val pipRatio = (binding.seekPipRatio.progress + 3) / 10.0
 
-        val bitmapResult = Bitmap.createBitmap(matResult.width(), matResult.height(), Bitmap.Config.ARGB_8888)
-        Utils.matToBitmap(matResult, bitmapResult)
-        binding.imageResult.setImageBitmap(bitmapResult)
+            val matResult = Mat()
 
+            pipAndWeighted(mat1, mat2, matResult, getPipSize(pipRatio), alpha, beta, gamma, pipEnable)
+
+//            val mat = Mat()
+//            pipAndWeighted(mat1, mat2, mat, getPipSize(pipRatio), alpha, beta, gamma, binding.switchPip.isChecked)
+//            val openCV4 = NativeOpenCV4()
+//            openCV4.multiScaleDetailBoosting(mat, matResult)
+
+            val bitmapResult = Bitmap.createBitmap(matResult.width(), matResult.height(), Bitmap.Config.ARGB_8888)
+            Utils.matToBitmap(matResult, bitmapResult)
+            activity?.runOnUiThread {
+                binding.imageResult.setImageBitmap(bitmapResult)
+                showContentView()
+            }
+        }
     }
 
 }

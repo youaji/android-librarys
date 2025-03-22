@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include "opencv2/opencv.hpp"
+#include "imgproc/types_c.h"
 
 void separateGaussianFilter(const cv::Mat &src, cv::Mat &dst, int ksize, double sigma) {
     CV_Assert(src.channels() == 1 || src.channels() == 3); //只处理单通道或者三通道图像
@@ -67,7 +68,7 @@ void separateGaussianFilter(const cv::Mat &src, cv::Mat &dst, int ksize, double 
             if (channels == 1)
                 dst.at<cv::Vec3b>(i, j) = static_cast<uchar>(sum[0]);
             else if (channels == 3) {
-                cv:: Vec3b rgb = {static_cast<uchar>(sum[0]), static_cast<uchar>(sum[1]), static_cast<uchar>(sum[2])};
+                cv::Vec3b rgb = {static_cast<uchar>(sum[0]), static_cast<uchar>(sum[1]), static_cast<uchar>(sum[2])};
                 dst.at<cv::Vec3b>(i, j) = rgb;
             }
         }
@@ -99,13 +100,19 @@ cv::Mat multiScaleDetailBoosting(cv::Mat src, int radius) {
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_youaji_libs_opencv4_NativeOpenCV4_multiScaleDetailBoosting(
+Java_com_youaji_libs_opencv4_NativeOpenCV4_nativeMultiScaleDetailBoosting(
         JNIEnv *env,
         jobject  /* this */,
         jlong src_addr,
         jlong dst_addr,
         jint radius) {
-    cv::Mat& srcMat = *(cv::Mat*)src_addr;
-    cv::Mat& dstMat = *(cv::Mat*)dst_addr;
-    multiScaleDetailBoosting(srcMat,radius);
+
+    cv::Mat &srcMat = *(cv::Mat *) src_addr;
+    cv::Mat &dstMat = *(cv::Mat *) dst_addr;
+    cv::Mat temp;
+    // srcMat 为 4 通道，转换为 3 通道
+    cv::cvtColor(srcMat, temp, CV_BGRA2BGR);
+    cv::Mat mat = multiScaleDetailBoosting(temp, radius);
+    // dstMat 需要 4 通道，转换为 4 通道
+    cv::cvtColor(mat, dstMat, CV_BGR2BGRA);
 }
