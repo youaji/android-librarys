@@ -21,41 +21,13 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             app:cardCornerRadius="5dp"
-            app:cardElevation="5dp">
+            app:cardElevation="5dp"
+            tools:ignore="NestedWeights">
 
-            <LinearLayout
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Spinner
-                    android:id="@+id/spinner_start"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/white_alpha_50"
-                    android:elevation="5dp"
-                    android:spinnerMode="dropdown"
-                    android:translationZ="5dp" />
-
-<!--                <org.videolan.libvlc.util.VLCVideoLayout-->
-<!--                    android:id="@+id/layout_video_start"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content" />-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextureView
-                        android:id="@+id/view_texture_start"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
 
@@ -67,40 +39,10 @@
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp">
 
-            <LinearLayout
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Spinner
-                    android:id="@+id/spinner_end"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/white_alpha_50"
-                    android:elevation="5dp"
-                    android:spinnerMode="dropdown"
-                    android:translationZ="5dp" />
-
-<!--                <org.videolan.libvlc.util.VLCVideoLayout-->
-<!--                    android:id="@+id/layout_video_end"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content" />-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextureView
-                        android:id="@+id/view_texture_end"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
 
@@ -123,7 +65,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_alpha"
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingVertical="5dp"
                 android:text="alpha"
@@ -146,7 +88,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_beta"
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingVertical="5dp"
                 android:text="beta"
@@ -169,7 +111,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_gamma"
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingVertical="5dp"
                 android:text="gamma"
@@ -192,7 +134,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_pip_ratio"
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingVertical="5dp"
                 android:text="pip ratio"
@@ -214,37 +156,19 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:id="@+id/text_pip"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingVertical="5dp"
-                android:text="合成类型"
+                android:text="pip"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_weighted_image"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:text="图片"
-                    tools:ignore="HardcodedText" />
-
-                <RadioButton
-                    android:id="@+id/radio_weighted_video"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="视频"
-                    tools:ignore="HardcodedText" />
-
-            </RadioGroup>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_pip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -279,17 +203,10 @@
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp">
 
-        <LinearLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_result"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <TextureView
-                android:id="@+id/view_texture_result"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
+            android:layout_height="match_parent" />
 
     </androidx.cardview.widget.CardView>
 

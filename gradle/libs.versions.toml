@@ -44,6 +44,7 @@ youajiFtpClient = "1.0.0"
 youajiFtpServer = "1.0.0"
 youajiJsBridge = "1.0.0"
 youajiOpencv = "1.0.0"
+youajiOpencv4 = "1.0.0"
 youajiPictureViewer = "1.0.0"
 youajiSocket = "1.0.0"
 youajiTcpClient = "1.0.0"
@@ -94,6 +95,7 @@ youaji-ftp-client = { group = "com.youaji.android", name = "libs-ftp-client", ve
 youaji-ftp-server = { group = "com.youaji.android", name = "libs-ftp-server", version.ref = "youajiFtpServer" }
 youaji-js-bridge = { group = "com.youaji.android", name = "libs-js-bridge", version.ref = "youajiJsBridge" }
 youaji-opencv = { group = "com.youaji.android", name = "libs-opencv", version.ref = "youajiOpencv" }
+youaji-opencv4 = { group = "com.youaji.android", name = "libs-opencv4", version.ref = "youajiOpencv4" }
 youaji-picture-viewer = { group = "com.youaji.android", name = "libs-picture-viewer", version.ref = "youajiPictureViewer" }
 youaji-socket = { group = "com.youaji.android", name = "libs-socket", version.ref = "youajiSocket" }
 youaji-tcp-client = { group = "com.youaji.android", name = "libs-tcp-client", version.ref = "youajiTcpClient" }
