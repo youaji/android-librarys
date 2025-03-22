@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app-example" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/library/libs-debug" />
+            <option value="$PROJECT_DIR$/library/libs-debug-crash" />
             <option value="$PROJECT_DIR$/library/libs-opencv" />
             <option value="$PROJECT_DIR$/library/libs-opencv4" />
           </set>

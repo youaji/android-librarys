@@ -57,6 +57,8 @@ dependencies {
     implementation libs.androidx.appcompat
     implementation libs.androidx.swiperefreshlayout
 
+    api 'com.jakewharton:process-phoenix:2.1.2'
+
     moduleImplementation("${libs.youaji.ui.get()}")
     moduleImplementation("${libs.youaji.util.get()}")
 }

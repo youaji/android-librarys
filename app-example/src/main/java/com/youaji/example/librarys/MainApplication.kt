@@ -12,11 +12,6 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         DebugService.get.initCrash(this)
-        DebugService.get.initPgyer(
-            this,
-            "",
-            "",
-        )
     }
 
 //    override fun config(config: BasicConfig) {

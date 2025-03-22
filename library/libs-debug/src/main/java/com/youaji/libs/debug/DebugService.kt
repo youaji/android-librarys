@@ -3,14 +3,16 @@ package com.youaji.libs.debug
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import com.jakewharton.processphoenix.ProcessPhoenix
 import com.pgyer.pgyersdk.PgyerSDKManager
 import com.pgyer.pgyersdk.pgyerenum.Features
 import com.youaji.libs.debug.crash.CrashActivity
 import com.youaji.libs.debug.crash.CrashHandler
 import com.youaji.libs.debug.crash.CrashListener
-import com.youaji.libs.debug.crash.util.CrashToolUtils
+import com.youaji.libs.debug.crash.CrashTipsActivity
 import com.youaji.libs.debug.databinding.LibsDebugDialogDebugMenuBinding
 import com.youaji.libs.debug.file.FileExplorerActivity
 import com.youaji.libs.debug.ftp.FTPActivity
@@ -90,7 +92,7 @@ class DebugService private constructor() {
             }
             .show()
 
-    fun initCrash(application: Application, callback: ((isRestart: Boolean, recorded: Boolean) -> Unit)? = null) {
+    fun initCrash(application: Application, tips: Boolean = true, callback: ((isRestart: Boolean, recorded: Boolean) -> Unit)? = null) {
         CrashHandler.get.init(application, object : CrashListener {
             /**
              * 重启app
@@ -100,6 +102,9 @@ class DebugService private constructor() {
                 // CrashToolUtils.reStartApp1(application, 2000)
                 // CrashToolUtils.reStartApp2(App.this,2000, MainActivity.class);
                 // CrashToolUtils.reStartApp3(App.this);
+                if (tips) {
+                    ProcessPhoenix.triggerRebirth(application, Intent(application, CrashTipsActivity::class.java))
+                }
                 callback?.invoke(true, false)
             }
 
@@ -110,6 +115,9 @@ class DebugService private constructor() {
                 println("崩溃----------recordedException------")
                 //自定义上传crash，支持开发者上传自己捕获的crash数据
                 // StatService.recordException(getApplication(), ex);
+                if (tips) {
+                    ProcessPhoenix.triggerRebirth(application, Intent(application, CrashTipsActivity::class.java))
+                }
                 callback?.invoke(false, true)
             }
         })
@@ -119,7 +127,7 @@ class DebugService private constructor() {
     fun initPgyer(
         context: Context,
         jsToken: String,
-        apiKey: String
+        apiKey: String,
     ) {
         PgyerSDKManager
             .Init()

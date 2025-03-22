@@ -56,6 +56,7 @@ class MainActivity : BasicBindingActivity<ActivityMainBinding>() {
                 Process.killProcess(Process.myPid())
             }
         })
+        throw NullPointerException("")
     }
 
     private fun requestPermissions() {
