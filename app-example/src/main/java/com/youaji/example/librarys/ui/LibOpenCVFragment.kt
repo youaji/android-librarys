@@ -10,13 +10,11 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.activity.result.contract.ActivityResultContracts
 import com.youaji.example.librarys.databinding.FragmentLibOpencvBinding
-import com.youaji.libs.opencv4.NativeOpenCV4
 import com.youaji.libs.ui.basic.BasicBindingFragment
 import com.youaji.libs.util.design.alert
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.opencv.android.Utils
 import org.opencv.core.Core
 import org.opencv.core.Mat

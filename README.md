@@ -49,4 +49,4 @@ https://github.com/xuuhaoo/OkSocket
 https://github.com/opencv/opencv
 
 ## License
-[Apache License](LICENSE) © Richard Littauer
+[Apache License](LICENSE) ©Youaji
